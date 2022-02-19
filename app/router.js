@@ -5,5 +5,7 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/', controller.home.index);
+  router.get('/', controller.checkout.home);
+  router.get('/test', controller.checkout.index);
+  router.post('/validate', controller.checkout.validate);
 };
