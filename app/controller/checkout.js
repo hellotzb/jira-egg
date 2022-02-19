@@ -26,6 +26,20 @@ class TestController extends Controller {
     ctx.body = 'success';
   }
 
+  async login() {
+    const { ctx } = this;
+    const body = ctx.request.body;
+    // 设置cookie
+    ctx.cookies.set('user', JSON.stringify(body));
+    // 设置session
+    ctx.session.user = body; // 默认生成一个key值存放加密后的信息在cookie中，key值可通过config配置
+
+    ctx.body = {
+      status: 200,
+      data: body,
+    };
+  }
+
   async home() {
     const { ctx } = this;
     ctx.body = 'hi, egg';

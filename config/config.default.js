@@ -24,6 +24,16 @@ module.exports = appInfo => {
     },
   };
 
+  // config.static = {
+  // prefix: '/assets/', 更改默认静态资源路径（请求路径）
+  // dir: path.join(appInfo.baseDir, "app/assets") 更改默认静态资源路径（资源存放位置）
+  // }
+
+  config.session = {
+    key: 'EGG_SESSION',
+    // 其他参数和cookie中参数一致
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',

@@ -5,13 +5,14 @@ const os = require('os');
 
 describe('controller test', () => {
   it('home', () => {
-    return app.httpRequest().get('/').expect('hi, egg').expect(200);
+    return app.httpRequest().get('/').expect('hi, egg')
+      .expect(200);
   });
 
   it('test', () => {
     return app
       .httpRequest()
-      .get('/test')
+      .get('/checkout/test')
       .expect({
         memorys: os.totalmem() / 1024 / 1024 / 1024 + 'G',
         platform: os.platform(),
@@ -24,7 +25,7 @@ describe('controller test', () => {
     // 会有csrf报错，可在config.default.js中关闭csrf security校验
     return app
       .httpRequest()
-      .post('/validate')
+      .post('/checkout/validate')
       .send({
         name: 'zhangsan',
         age: 28,

@@ -6,6 +6,7 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.checkout.home);
-  router.get('/test', controller.checkout.index);
-  router.post('/validate', controller.checkout.validate);
+  router.get('/checkout/test', controller.checkout.index);
+  router.post('/checkout/validate', controller.checkout.validate);
+  router.post('/checkout/login', controller.checkout.login);
 };
