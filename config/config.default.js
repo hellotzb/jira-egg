@@ -21,6 +21,9 @@ module.exports = (appInfo) => {
   config.middlewareTest = {
     type: 'all',
   };
+  config.auth = {
+    include: ['/checkout'], // 自定义属性，插件处理include数组内的地址才需要使用auh插件
+  };
 
   config.security = {
     csrf: {
