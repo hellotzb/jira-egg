@@ -5,7 +5,7 @@
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
-module.exports = appInfo => {
+module.exports = (appInfo) => {
   /**
    * built-in config
    * @type {Egg.EggAppConfig}
@@ -16,7 +16,11 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1645238045465_8937';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ['middlewareTest'];
+  // 对应 middlewareTest中间件的options参数
+  config.middlewareTest = {
+    type: 'all',
+  };
 
   config.security = {
     csrf: {
