@@ -23,6 +23,7 @@ class TestController extends Controller {
     };
     // validate(rule[, data])可以传递自己处理过的数据，默认使用 this.request.body
     ctx.validate(rule);
+    // 校验失败自动返回 422 响应
     ctx.body = 'success';
   }
 
