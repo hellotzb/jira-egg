@@ -9,10 +9,13 @@ class UserService extends Service {
   async testRetrieve() {
     try {
       const { app } = this;
-      // 查询整张表的数据
+      // egg-mysql 查询整张表的数据
       // const res = await app.mysql.select('house');
-      // 查询整张表的数据
+      // egg-mysql 查询表对应id为1的数据
       const res = await app.mysql.get('house', { id: 1 });
+
+      // egg-sequelize 查询整张表数据
+      // const res = await app.model.User.findAll();
       return res;
     } catch (error) {
       console.error(error);
