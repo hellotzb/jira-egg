@@ -3,7 +3,7 @@
 /**
  * @param {Egg.Application} app - egg application
  */
-module.exports = (app) => {
+module.exports = app => {
   const { router, controller } = app;
   router.redirect('/', '/user', 302);
   router.get('/checkout', controller.checkout.home);

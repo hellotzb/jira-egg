@@ -16,13 +16,13 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1645238045465_8937';
 
   // add your middleware config here
-  config.middleware = ['middlewareTest'];
+  config.middleware = [ 'middlewareTest' ];
   // 对应 middlewareTest中间件的options参数
   config.middlewareTest = {
     type: 'all',
   };
   config.auth = {
-    include: ['/checkout'], // 自定义属性，插件处理include数组内的地址才需要使用auh插件
+    include: [ '/checkout' ], // 自定义属性，插件处理include数组内的地址才需要使用auh插件
   };
 
   config.security = {
