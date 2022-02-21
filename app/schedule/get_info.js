@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const Subscription = require('egg').Subscription;
 

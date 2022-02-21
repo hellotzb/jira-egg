@@ -8,7 +8,7 @@ exports.validate = {
 };
 
 exports.auth = {
-  enable: false,
+  enable: true,
   path: path.join(__dirname, '../lib/plugin/egg-auth'),
 };
 

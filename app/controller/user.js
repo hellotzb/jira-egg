@@ -4,7 +4,7 @@ const { Controller } = require('egg');
 
 class Usercontroller extends Controller {
   async index() {
-    const { app, ctx } = this;
+    const { ctx } = this;
     const res = await ctx.service.user.testRetrieve();
     ctx.body = res;
   }
