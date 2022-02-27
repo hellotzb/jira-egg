@@ -66,23 +66,16 @@ class Usercontroller extends Controller {
     }
   }
   async detail() {
+    // 使用userExist中间件处理用户不存在的情况
     const { ctx } = this;
-    const user = await ctx.service.user.getUser(ctx.username);
-    if (user) {
-      ctx.body = {
-        status: 200,
-        data: {
-          ...ctx.helper.unPick(user.dataValues, ['passwords']),
-          createTime: new Date(user.createTime).getTime(),
-          token,
-        },
-      };
-    } else {
-      ctx.body = {
-        status: 500,
-        errMsg: '该用户不存在',
-      };
-    }
+    ctx.body = {
+      status: 200,
+      data: {
+        ...ctx.helper.unPick(user.dataValues, ['passwords']),
+        createTime: new Date(user.createTime).getTime(),
+        token,
+      },
+    };
   }
   async logout() {
     const { ctx } = this;

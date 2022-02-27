@@ -36,9 +36,12 @@ module.exports = appInfo => {
   // dir: path.join(appInfo.baseDir, "app/assets") 更改默认静态资源路径（资源存放位置）
   // }
 
+  // 重启服务会丢失session！！！建议保存在redis中
   config.session = {
     key: 'EGG_SESSION',
     // 其他参数和cookie中参数一致
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60, // 缓存时间1小时
   };
 
   config.mysql = {
