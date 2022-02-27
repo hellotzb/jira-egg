@@ -1,7 +1,6 @@
 'use strict';
 
 const { Controller } = require('egg');
-const md5 = require('md5');
 
 class Usercontroller extends Controller {
   async index() {
@@ -21,11 +20,11 @@ class Usercontroller extends Controller {
       return;
     }
 
-    // 注册用户需要对密码处理：使用md5加密。md5可以进行反解密，需要进行加盐处理
+    // 注册用户需要对密码处理：使用md5加密。
     // const res = await ctx.model.User.add(reqParams);
     const res = await ctx.service.User.add({
       ...reqParams,
-      password: md5(reqParams.password + app.config.salt),
+      password: ctx.helper.encryptedPwd(reqParams.password),
       createTime: ctx.helper.formatTime(),
     });
     if (res) {
@@ -41,6 +40,27 @@ class Usercontroller extends Controller {
       ctx.body = {
         status: 500,
         errMsg: '注册失败',
+      };
+    }
+  }
+  async login() {
+    const { ctx } = this;
+    const { username, password } = ctx.request.body;
+    const user = await ctx.service.user.getUser(username, password);
+    if (user) {
+      // Session 的实现是基于 Cookie 的，默认配置下，用户 Session 的内容加密后直接存储在 Cookie 中的一个字段中，用户每次请求我们网站的时候都会带上这个 Cookie，我们在服务端解密后使用。
+      ctx.session.userId = user.id;
+      ctx.body = {
+        status: 200,
+        data: {
+          ...ctx.helper.unPick(user.dataValues, ['passwords']),
+          createTime: new Date(user.createTime).getTime(),
+        },
+      };
+    } else {
+      ctx.body = {
+        status: 500,
+        errMsg: '该用户不存在',
       };
     }
   }

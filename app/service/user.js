@@ -23,11 +23,14 @@ class UserService extends Service {
     }
   }
 
-  async getUser(username) {
+  async getUser(username, password) {
     const { ctx } = this;
     try {
+      // 注册接口getUser不需要根据密码查询，登陆接口getUser需要根据密码查询
       const res = await ctx.model.User.findOne({
-        where: { username },
+        where: password
+          ? { username, password: ctx.helper.encryptedPwd(password) }
+          : { username },
       });
       return res;
     } catch (error) {
