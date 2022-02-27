@@ -44,17 +44,18 @@ class Usercontroller extends Controller {
     }
   }
   async login() {
-    const { ctx } = this;
+    const { ctx, app } = this;
     const { username, password } = ctx.request.body;
     const user = await ctx.service.user.getUser(username, password);
     if (user) {
-      // Session 的实现是基于 Cookie 的，默认配置下，用户 Session 的内容加密后直接存储在 Cookie 中的一个字段中，用户每次请求我们网站的时候都会带上这个 Cookie，我们在服务端解密后使用。
-      ctx.session.userId = user.id;
+      // 使用jwt改造接口
+      const token = ctx.helper.jwtSign(username);
       ctx.body = {
         status: 200,
         data: {
           ...ctx.helper.unPick(user.dataValues, ['passwords']),
           createTime: new Date(user.createTime).getTime(),
+          token,
         },
       };
     } else {

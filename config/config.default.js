@@ -74,6 +74,10 @@ module.exports = appInfo => {
     },
   };
 
+  config.jwt = {
+    secret: 'hellotzb', // jwt密钥
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',

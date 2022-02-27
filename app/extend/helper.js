@@ -32,4 +32,16 @@ module.exports = {
     }
     return newObj;
   },
+  async jwtSign(username) {
+    const { ctx, app } = this;
+    const token = app.jwt.sign(
+      {
+        username,
+      },
+      app.config.jwt.secret
+    );
+    // Session 的实现是基于 Cookie 的，默认配置下，用户 Session 的内容加密后直接存储在 Cookie 中的一个字段中，用户每次请求我们网站的时候都会带上这个 Cookie，我们在服务端解密后使用。
+    ctx.session[username] = 1;
+    return token;
+  },
 };
