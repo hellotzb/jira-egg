@@ -16,4 +16,6 @@ module.exports = app => {
   // prod
   route.post('/api/user/register', controller.user.register);
   route.post('/api/user/login', controller.user.login);
+  route.post('/api/user/detail', controller.user.detail);
+  route.post('/api/user/logout', controller.user.logout);
 };

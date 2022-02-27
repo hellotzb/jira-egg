@@ -44,7 +44,7 @@ class Usercontroller extends Controller {
     }
   }
   async login() {
-    const { ctx, app } = this;
+    const { ctx } = this;
     const { username, password } = ctx.request.body;
     const user = await ctx.service.user.getUser(username, password);
     if (user) {
@@ -62,6 +62,40 @@ class Usercontroller extends Controller {
       ctx.body = {
         status: 500,
         errMsg: '该用户不存在',
+      };
+    }
+  }
+  async detail() {
+    const { ctx } = this;
+    const user = await ctx.service.user.getUser(ctx.username);
+    if (user) {
+      ctx.body = {
+        status: 200,
+        data: {
+          ...ctx.helper.unPick(user.dataValues, ['passwords']),
+          createTime: new Date(user.createTime).getTime(),
+          token,
+        },
+      };
+    } else {
+      ctx.body = {
+        status: 500,
+        errMsg: '该用户不存在',
+      };
+    }
+  }
+  async logout() {
+    const { ctx } = this;
+    try {
+      ctx.session[ctx.username] = null;
+      ctx.body = {
+        status: 200,
+        data: 'ok',
+      };
+    } catch (error) {
+      ctx.body = {
+        status: 500,
+        errMsg: '退出登陆失败',
       };
     }
   }

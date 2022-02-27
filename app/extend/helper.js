@@ -32,7 +32,7 @@ module.exports = {
     }
     return newObj;
   },
-  async jwtSign(username) {
+  jwtSign(username) {
     const { ctx, app } = this;
     const token = app.jwt.sign(
       {
