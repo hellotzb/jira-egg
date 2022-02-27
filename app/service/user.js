@@ -22,6 +22,30 @@ class UserService extends Service {
       return null;
     }
   }
+
+  async getUser(username) {
+    const { ctx } = this;
+    try {
+      const res = await ctx.model.User.findOne({
+        where: { username },
+      });
+      return res;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+
+  async addUser(params) {
+    const { ctx } = this;
+    try {
+      const res = await ctx.model.User.create(params);
+      return res;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
 }
 
 module.exports = UserService;

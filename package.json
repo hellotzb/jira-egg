@@ -11,11 +11,13 @@
     "egg-mysql": "^3.1.0",
     "egg-scripts": "^2.11.0",
     "egg-sequelize": "^6.0.0",
+    "md5": "^2.3.0",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
+    "dayjs": "^1.10.7",
     "egg-bin": "^4.11.0",
     "egg-ci": "^1.11.0",
     "egg-mock": "^3.21.0",

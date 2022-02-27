@@ -18,12 +18,12 @@ class TestController extends Controller {
     const rule = {
       name: 'string',
       age: { type: 'int', max: 200 },
-      gender: [ 'male', 'female' ],
+      gender: ['male', 'female'],
       birthday: { type: 'date', required: false },
     };
     // validate(rule[, data])可以传递自己处理过的数据，默认使用 this.request.body
-    ctx.validate(rule);
     // 校验失败自动返回 422 响应
+    ctx.validate(rule);
     ctx.body = 'success';
   }
 
