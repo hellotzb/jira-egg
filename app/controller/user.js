@@ -49,7 +49,10 @@ class Usercontroller extends Controller {
     const user = await ctx.service.user.getUser(username, password);
     if (user) {
       // 使用jwt改造接口
-      const token = ctx.helper.jwtSign(username);
+      const token = ctx.helper.jwtSign({
+        id: user.id,
+        username: user.username,
+      });
       ctx.body = {
         status: 200,
         data: {

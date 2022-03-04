@@ -32,10 +32,12 @@ module.exports = {
     }
     return newObj;
   },
-  jwtSign(username) {
+  jwtSign({ id, username }) {
     const { ctx, app } = this;
+    // token中储存用户id和username信息
     const token = app.jwt.sign(
       {
+        id,
         username,
       },
       app.config.jwt.secret
