@@ -12,6 +12,11 @@ exports.auth = {
   path: path.join(__dirname, '../lib/plugin/egg-auth'),
 };
 
+exports.notFound = {
+  enable: true,
+  path: path.join(__dirname, '../lib/plugin/egg-notFound'),
+};
+
 exports.mysql = {
   enable: true,
   package: 'egg-mysql',

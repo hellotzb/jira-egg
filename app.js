@@ -2,5 +2,7 @@
 
 module.exports = app => {
   // 框架和插件不支持在 config.default.js 中匹配 middleware
-  app.config.coreMiddleware.unshift('auth');
+  // 应用层定义的中间件（app.config.appMiddleware）和框架默认中间件（app.config.coreMiddleware）都会被加载器加载，并挂载到 app.middleware 上。
+  app.config.coreMiddleware.push('notFound');
+  app.config.coreMiddleware.push('auth');
 };

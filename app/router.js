@@ -5,7 +5,7 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  const userExists = app.middleware.userExists();
+  const userExist = app.middleware.userExist();
   // test
   router.redirect('/', '/user', 302);
   router.get('/checkout', controller.checkout.home);
@@ -15,9 +15,9 @@ module.exports = app => {
   router.get('/user', controller.user.index);
 
   // prod
-  route.post('/api/user/register', controller.user.register);
-  route.post('/api/user/login', controller.user.login);
+  router.post('/api/user/register', controller.user.register);
+  router.post('/api/user/login', controller.user.login);
   // 使用userExit的中间件
-  route.post('/api/user/detail', userExists, controller.user.detail);
-  route.post('/api/user/logout', controller.user.logout);
+  router.post('/api/user/detail', userExist, controller.user.detail);
+  router.post('/api/user/logout', controller.user.logout);
 };
