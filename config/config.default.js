@@ -26,6 +26,10 @@ module.exports = appInfo => {
   };
   // 防御CSRF攻击，进行Referer 验证，接口只允许allowHosts白名单内的referer访问
   config.allowHosts = ['localhost:8000', '127.0.0.1:8000'];
+  config.interfaceLimit = {
+    maxCount: 3, // 最多请求个数
+    time: 3 * 1000, // 间隔时间
+  };
 
   config.security = {
     csrf: {
