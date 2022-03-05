@@ -24,6 +24,8 @@ module.exports = appInfo => {
   config.auth = {
     // include: ['/checkout'], // 自定义属性，插件处理include数组内的地址才需要使用auh插件
   };
+  // 防御CSRF攻击，进行Referer 验证，接口只允许allowHosts白名单内的referer访问
+  config.allowHosts = ['localhost:8000', '127.0.0.1:8000'];
 
   config.security = {
     csrf: {
