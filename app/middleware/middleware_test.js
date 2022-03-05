@@ -3,7 +3,7 @@
 module.exports = options => {
   // options 对应 config.middlewareTest 的配置
   return async (ctx, next) => {
-    console.log('middleware-test start', options);
+    console.log('middleware-test start');
     await next();
     console.log('middleware-test end');
   };

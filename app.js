@@ -10,5 +10,6 @@ module.exports = app => {
     'allowHosts',
     'notFound',
     'auth',
+    'interfaceCache',
   ];
 };

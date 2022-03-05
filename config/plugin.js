@@ -27,6 +27,11 @@ exports.interfaceLimit = {
   path: path.join(__dirname, '../lib/plugin/egg-interfaceLimit'),
 };
 
+exports.interfaceCache = {
+  enable: true,
+  path: path.join(__dirname, '../lib/plugin/egg-interfaceCache'),
+};
+
 exports.mysql = {
   enable: true,
   package: 'egg-mysql',

@@ -30,6 +30,10 @@ module.exports = appInfo => {
     maxCount: 3, // 最多请求个数
     time: 3 * 1000, // 间隔时间
   };
+  config.interfaceCache = {
+    expire: 60 * 60 * 24, // redis缓存过期时间
+    include: ['/api/user/detail'], // 需要缓存的接口
+  };
 
   config.security = {
     csrf: {
@@ -98,6 +102,7 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
     salt: 'tzbweb', // 防止md5加密后被反解密，进行加盐处理
+    redisExpire: 60 * 60 * 24, // redis缓存时间
   };
 
   return {
