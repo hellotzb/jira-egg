@@ -22,7 +22,7 @@ module.exports = appInfo => {
     type: 'all',
   };
   config.auth = {
-    include: ['/checkout'], // 自定义属性，插件处理include数组内的地址才需要使用auh插件
+    // include: ['/checkout'], // 自定义属性，插件处理include数组内的地址才需要使用auh插件
   };
 
   config.security = {
@@ -79,6 +79,13 @@ module.exports = appInfo => {
 
   config.jwt = {
     secret: 'hellotzb', // jwt密钥
+  };
+
+  exports.view = {
+    mapping: {
+      // '.ejs': 'ejs',
+      '.html': 'ejs',
+    },
   };
 
   // add your user config here

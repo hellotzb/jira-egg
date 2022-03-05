@@ -1,4 +1,8 @@
 'use strict';
+// 框架默认提供以下 Helper 方法：
+// pathFor(name, params): 生成对应[路由]的 path 路径。
+// urlFor(name, params): 生成对应[路由]的 URL。
+// shtml() / sjs() / escape(): 由安全组件提供的安全方法。https://github.com/eggjs/egg-security/blob/master/README.zh-CN.md
 
 const os = require('os');
 const dayjs = require('dayjs');

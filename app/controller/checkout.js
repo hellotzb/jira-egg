@@ -45,6 +45,14 @@ class TestController extends Controller {
     const { ctx } = this;
     ctx.body = 'hi, egg';
   }
+
+  async ssr() {
+    const { ctx } = this;
+    await ctx.render('checkout.html', {
+      data: 'world',
+      list: ['java', 'python', 'javascript'],
+    });
+  }
 }
 
 module.exports = TestController;

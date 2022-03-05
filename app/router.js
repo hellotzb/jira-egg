@@ -12,6 +12,7 @@ module.exports = app => {
   router.get('/checkout/test', controller.checkout.index);
   router.post('/checkout/validate', controller.checkout.validate);
   router.post('/checkout/login', controller.checkout.login);
+  router.get('/checkout/ssr', controller.checkout.ssr);
   router.get('/user', controller.user.index);
 
   // prod

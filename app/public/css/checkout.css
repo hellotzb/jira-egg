@@ -1,0 +1,6 @@
+/* 可通过localhost:7001/public/css/checkout.css在浏览器查看 */
+/* 可通过更改config.static进行配置 */
+.checkout {
+  color: red;
+  font-weight: bold;
+}
